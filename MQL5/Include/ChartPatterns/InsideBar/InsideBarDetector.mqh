@@ -14,6 +14,11 @@ private:
 public:
                   InsideBarDetector();
                   ~InsideBarDetector();
+                  
+                  bool IsInsideBar(MqlRates &previousBarRates, MqlRates &currentBarRates)
+                  {
+                     return false;
+                  }
 };
 InsideBarDetector::InsideBarDetector()
 {
