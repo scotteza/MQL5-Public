@@ -13,6 +13,7 @@ bool RunAllInsideBarTests()
    bool allTestsPassed = true;
    
    allTestsPassed = DetectAnInsideBar() && allTestsPassed;
+   allTestsPassed = DetectANonInsideBar() && allTestsPassed;
    
    return allTestsPassed;
 }
@@ -46,6 +47,41 @@ bool DetectAnInsideBar()
    if(!isInsideBar)
    {
       Alert("Inside Bar detection failed.");
+      return false;
+   }
+   
+   return true;
+}
+
+bool DetectANonInsideBar()
+{
+   MqlRates previousBarRates;
+   previousBarRates.time = D'2017/09/14 00:00:00';
+   previousBarRates.open = 1.18885000;
+   previousBarRates.high = 1.19222000;
+   previousBarRates.low = 1.18373000;
+   previousBarRates.close = 1.19135000;
+   previousBarRates.tick_volume = 153718;
+   previousBarRates.spread = 5;
+   previousBarRates.real_volume = 0;
+   
+   MqlRates currentBarRates;
+   currentBarRates.time = D'2017/09/15 00:00:00';
+   currentBarRates.open = 1.19146000;
+   currentBarRates.high = 1.19869000;
+   currentBarRates.low = 1.19007000;
+   currentBarRates.close = 1.19455000;
+   currentBarRates.tick_volume = 139110;
+   currentBarRates.spread = 5;
+   currentBarRates.real_volume = 0;
+   
+   InsideBarDetector insideBarDetector;
+   
+   bool isInsideBar = insideBarDetector.IsInsideBar(previousBarRates, currentBarRates);
+   
+   if(isInsideBar)
+   {
+      Alert("Inside Bar detected where one does not exist.");
       return false;
    }
    
