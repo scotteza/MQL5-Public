@@ -33,3 +33,4 @@ config/
 logs/
 origin.txt
 profiles/
+*.bak
