@@ -17,7 +17,7 @@ public:
                   
                   bool IsInsideBar(MqlRates &previousBarRates, MqlRates &currentBarRates)
                   {
-                     return false;
+                     return previousBarRates.low < currentBarRates.low;
                   }
 };
 InsideBarDetector::InsideBarDetector()
