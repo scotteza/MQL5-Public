@@ -11,5 +11,16 @@
 
 void OnStart()
 {
-
+   bool allTestsPassed = true;
+   
+   allTestsPassed = RunAllInsideBarTests() && allTestsPassed;
+   
+   if(allTestsPassed == true)
+   {
+      Alert("Overall result: All tests passed.");
+   }
+   else
+   {
+      Alert("Overall result: One or more test(s) failed.");
+   }
 }
