@@ -11,6 +11,9 @@
 
 void OnStart()
 {
+   Alert("");
+   Alert("New test run.");
+   
    bool allTestsPassed = true;
    
    allTestsPassed = RunAllInsideBarTests() && allTestsPassed;
