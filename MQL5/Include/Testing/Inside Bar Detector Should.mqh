@@ -20,29 +20,15 @@ bool RunAllInsideBarTests()
 
 bool DetectAnInsideBar()
 {
-   MqlRates previousBarRates;
-   previousBarRates.time = D'2017/08/21 00:00:00';
-   previousBarRates.open = 1.17573000;
-   previousBarRates.high = 1.18280000;
-   previousBarRates.low = 1.17307000;
-   previousBarRates.close = 1.18132000;
-   previousBarRates.tick_volume = 93406;
-   previousBarRates.spread = 5;
-   previousBarRates.real_volume = 0;
+   double previousBarHigh = 1.18280000;
+   double previousBarLow = 1.17307000;
    
-   MqlRates currentBarRates;
-   currentBarRates.time = D'2017/08/22 00:00:00';
-   currentBarRates.open = 1.18135;
-   currentBarRates.high = 1.18243;
-   currentBarRates.low = 1.17449;
-   currentBarRates.close = 1.17646;
-   currentBarRates.tick_volume = 85776;
-   currentBarRates.spread = 5;
-   currentBarRates.real_volume = 0;
+   double currentBarHigh = 1.18243;
+   double currentBarLow = 1.17449;
    
    InsideBarDetector insideBarDetector;
    
-   bool isInsideBar = insideBarDetector.IsInsideBar(previousBarRates, currentBarRates);
+   bool isInsideBar = insideBarDetector.IsInsideBar(previousBarHigh, previousBarLow, currentBarHigh, currentBarLow);
    
    if(!isInsideBar)
    {
@@ -55,29 +41,15 @@ bool DetectAnInsideBar()
 
 bool DetectANonInsideBar()
 {
-   MqlRates previousBarRates;
-   previousBarRates.time = D'2017/09/14 00:00:00';
-   previousBarRates.open = 1.18885000;
-   previousBarRates.high = 1.19222000;
-   previousBarRates.low = 1.18373000;
-   previousBarRates.close = 1.19135000;
-   previousBarRates.tick_volume = 153718;
-   previousBarRates.spread = 5;
-   previousBarRates.real_volume = 0;
+   double previousBarHigh = 1.19222000;
+   double previousBarLow = 1.18373000;
    
-   MqlRates currentBarRates;
-   currentBarRates.time = D'2017/09/15 00:00:00';
-   currentBarRates.open = 1.19146000;
-   currentBarRates.high = 1.19869000;
-   currentBarRates.low = 1.19007000;
-   currentBarRates.close = 1.19455000;
-   currentBarRates.tick_volume = 139110;
-   currentBarRates.spread = 5;
-   currentBarRates.real_volume = 0;
+   double currentBarHigh = 1.19869000;
+   double currentBarLow = 1.19007000;
    
    InsideBarDetector insideBarDetector;
    
-   bool isInsideBar = insideBarDetector.IsInsideBar(previousBarRates, currentBarRates);
+   bool isInsideBar = insideBarDetector.IsInsideBar(previousBarHigh, previousBarLow, currentBarHigh, currentBarLow);
    
    if(isInsideBar)
    {
